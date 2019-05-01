@@ -1,0 +1,11 @@
+version: '2.2'
+services:
+  default:
+    links:
+      - gocd:gocd
+  gocd:
+    image: gocd/gocd-server:v19.3.0
+    ports:
+      - 8153:8153
+    volumes:
+      - ${DOJO_WORK_OUTER}/passwd:/godata/passwd

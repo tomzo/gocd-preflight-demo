@@ -1,0 +1,2 @@
+DOJO_DRIVER=docker-compose
+DOJO_DOCKER_IMAGE=kudulab/gocd-cli-dojo:yaml
