@@ -10,6 +10,7 @@ case "${command}" in
     echo -n secret | htpasswd -i -B -c passwd admin
     ;;
   wait_online)
+    sleep 10
     for i in {1..200}; do
       HTTP_RESPONSE=$(curl --silent --write-out "HTTPSTATUS:%{http_code}" \
         "${GOCD_ENDPOINT}/api/v1/health" --insecure \
@@ -48,5 +49,18 @@ case "${command}" in
       exit 5
     fi
     echo "GoCD is now configured to authenticate with passwd file"
+    ;;
+  _setup_gocd)
+    ./tasks wait_online
+    ./tasks configure_auth
+    bash
+    ;;
+  setup_gocd)
+    ./tasks create_passwd
+    export GOCDCLI_SERVER_URL=$GOCD_ENDPOINT
+    export GOCDCLI_AUTH_TYPE=basic
+    export GOCDCLI_AUTH_USER=admin
+    export GOCDCLI_AUTH_PASSWORD=secret
+    dojo "./tasks _setup_gocd"
     ;;
 esac
