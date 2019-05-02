@@ -1,7 +1,7 @@
 format_version: 4
 pipelines:
   preflight-demo:
-    group: www
+    group: {{ group }}
     label_template: "${git[:8]}"
     materials:
       git:
@@ -15,4 +15,4 @@ pipelines:
                     command: /bin/bash
                     arguments:
                       - -c
-                      - echo hello
+                      - echo {{ greating }}

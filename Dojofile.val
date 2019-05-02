@@ -1,0 +1,2 @@
+DOJO_DRIVER=docker
+DOJO_DOCKER_IMAGE=kudulab/gocd-cli-dojo:yaml-0.10.1

@@ -6,6 +6,21 @@ GOCD_ENDPOINT="http://gocd:8153/go"
 
 command="$1"
 case "${command}" in
+  generate)
+    yasha  --mode=pedantic --group=www --greating=hello -o pipeline.gocd.yaml pipeline.yaml.j2
+    ;;
+  validate)
+    gocd configrepo preflight --yaml -r preflight-demo *.gocd.yaml
+    ;;
+  publish)
+    git fetch
+    git add *.gocd.yaml
+    git commit -m "generated config repo files" || true # Might be nothing to commit as well
+    git rebase origin/master
+    git checkout master
+    git merge config
+    git push origin master
+    ;;
   create_passwd)
     echo -n secret | htpasswd -i -B -c passwd admin
     ;;
