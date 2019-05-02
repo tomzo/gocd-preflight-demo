@@ -1,0 +1,18 @@
+format_version: 4
+pipelines:
+  preflight-demo:
+    group: www
+    label_template: "${git[:8]}"
+    materials:
+      git:
+        type: configrepo
+    stages:
+      - test:
+          jobs:
+            test:
+              tasks:
+                - exec:
+                    command: /bin/bash
+                    arguments:
+                      - -c
+                      - echo hello
