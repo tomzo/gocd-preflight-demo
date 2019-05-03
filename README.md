@@ -9,7 +9,7 @@ The `gocd-cli` is provided by [gocd-cli-dojo](https://github.com/gocd-contrib/do
 
 Assuming you already have a working docker, you can install dojo with:
 ```bash
-DOJO_VERSION=0.4.2
+DOJO_VERSION=0.5.0
 wget -O dojo https://github.com/ai-traders/dojo/releases/download/${DOJO_VERSION}/dojo_linux_amd64
 sudo mv dojo /usr/local/bin
 sudo chmod +x /usr/local/bin/dojo
