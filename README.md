@@ -15,7 +15,7 @@ sudo mv dojo /usr/local/bin
 sudo chmod +x /usr/local/bin/dojo
 ```
 
-Then to setup GoCD server and linked docker container with gocd-cli run following command at the root of the project:
+Then to setup GoCD server and linked docker container with gocd-cli run the following command at the root of the project:
 ```
 ./tasks setup_gocd
 ```
